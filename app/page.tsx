@@ -131,8 +131,8 @@ export default function Home() {
       ) : (
         <>
           <img
-            src="/logo-fresque.png"
-            alt="Logo Fresque du Climat"
+            src="/logofresquedutravail.jpg"
+            alt="Logo Fresque du Travail"
             style={{ width: 110, margin: '8px auto 16px auto', display: "block" }}
           />
           <h1 style={{marginBottom:0, textAlign:'center'}}>Merci, votre réponse a été enregistrée !</h1>
