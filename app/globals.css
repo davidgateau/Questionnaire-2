@@ -4,61 +4,52 @@ body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
 }
-
 .form-container {
-  max-width: 460px;
+  max-width: 470px;
   margin: 48px auto;
-  padding: 30px 24px 18px 24px;
+  padding: 32px 28px 24px 28px;
   background: white;
   border-radius: 18px;
   box-shadow: 0 4px 22px 0 #d5d6ea33;
 }
-
 h1 {
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   font-size: 2.1rem;
   font-weight: 700;
   letter-spacing: 1px;
 }
-
 .subtitle {
   color: #475569;
   text-align: center;
   margin-bottom: 18px;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
 }
-
 .vertical-fields {
   display: flex;
   flex-direction: column;
   gap: 0.6em;
 }
-
 .axes-block {
   display: flex;
   flex-direction: column;
-  gap: 9px;
-  margin-bottom: 13px;
+  gap: 11px;
+  margin-bottom: 12px;
 }
-
-label {
+.field-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.03rem;
-  gap: 10px;
+  font-size: 1.02rem;
 }
-
 input[type="number"], input[type="text"] {
-  padding: 5px 10px;
-  width: 80px;
+  padding: 6px 10px;
+  width: 90px;
   font-size: 1rem;
   border: 1.1px solid #d1d5db;
   border-radius: 8px;
   background: #f5f7fb;
 }
-
 button {
   display: block;
   margin: 18px auto 0 auto;
@@ -74,33 +65,24 @@ button {
   cursor: pointer;
   box-shadow: 0 2px 8px 0 #bae6fd24;
 }
-
 button:disabled {
   background: #a4b5cf;
   color: #fff;
   cursor: not-allowed;
 }
-
 .hrcolor {
   margin: 15px 0 7px 0;
   border: 0;
   border-top: 2px solid #a5b4fc;
-  opacity: 0.27;
+  opacity: 0.22;
 }
-
 .msg {
   text-align: center;
   margin-top: 10px;
   font-weight: 600;
 }
-
-.msg.error {
-  color: #c02b2b;
-}
-.msg.success {
-  color: #05963a;
-}
-
+.msg.error { color: #c02b2b;}
+.msg.success { color: #05963a;}
 .total-points {
   font-size: 1.04rem;
   text-align: center;
@@ -109,22 +91,8 @@ button:disabled {
   color: #3730a3;
   font-weight: 600;
 }
-
-.field-row {
-  margin-bottom: 0px;
-}
-
 @media (max-width: 600px) {
-  .form-container {
-    padding: 14px 4vw;
-    max-width: 98vw;
-  }
-  .field-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
-  }
-  .axes-block input[type="number"] {
-    width: 75px;
-  }
+  .form-container { padding: 14px 4vw; max-width: 98vw;}
+  .field-row { flex-direction: column; align-items: flex-start; gap: 3px;}
+  .axes-block input[type="number"] { width: 75px;}
 }
