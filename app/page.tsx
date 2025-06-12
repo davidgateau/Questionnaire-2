@@ -1,6 +1,7 @@
 'use client';
 import { useState } from "react";
 import { supabase } from "./supabaseClient";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 const axes = [
   "Intérêt/Plaisir",
@@ -17,6 +18,8 @@ export default function Home() {
   const [prenom, setPrenom] = useState("");
   const [values, setValues] = useState<number[]>(Array(8).fill(0));
   const [message, setMessage] = useState("");
+  const [showRadar, setShowRadar] = useState(false);
+
   const total = values.reduce((a, b) => a + b, 0);
 
   const handleChange = (i: number, v: string) => {
@@ -27,6 +30,8 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setShowRadar(false);
+    setMessage("");
     if (!prenom) {
       setMessage("Merci d'indiquer votre prénom.");
       return;
@@ -48,22 +53,30 @@ export default function Home() {
     }]);
     if (error) {
       setMessage("Erreur lors de l'enregistrement.");
+      setShowRadar(false);
     } else {
       setMessage("Merci, votre réponse a été enregistrée !");
+      setShowRadar(true);
     }
   };
 
+  // Préparation des données pour le radar
+  const radarData = axes.map((axe, i) => ({
+    dimension: axe,
+    valeur: values[i]
+  }));
+
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: 400, margin: "auto", padding: 16 }}>
+    <div className="form-container">
       <h1>Questionnaire de motivation</h1>
-      <label>
-        Prénom :
-        <input value={prenom} onChange={e => setPrenom(e.target.value)} required style={{ marginLeft: 8 }} />
-      </label>
-      <hr />
-      {axes.map((axe, i) => (
-        <div key={axe} style={{ margin: "8px 0" }}>
-          <label>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Prénom :
+          <input type="text" value={prenom} onChange={e => setPrenom(e.target.value)} required />
+        </label>
+        <hr style={{margin:'18px 0'}}/>
+        {axes.map((axe, i) => (
+          <label key={axe}>
             {axe} :
             <input
               type="number"
@@ -71,14 +84,28 @@ export default function Home() {
               max={10}
               value={values[i]}
               onChange={e => handleChange(i, e.target.value)}
-              style={{ width: 40, marginLeft: 8 }}
             />
           </label>
+        ))}
+        <div style={{ margin: "16px 0", textAlign: 'center' }}>Total points : <strong>{total}</strong> / 10</div>
+        <button type="submit" disabled={total !== 10}>Envoyer</button>
+        <div className={`msg${message.includes("erreur") || message.includes("Erreur") ? " error" : message ? " success" : ""}`}>{message}</div>
+      </form>
+
+      {/* Affichage du radar si showRadar */}
+      {showRadar && (
+        <div style={{ marginTop: 40 }}>
+          <h2 style={{ textAlign: 'center', fontSize: '1.25rem', marginBottom: 10 }}>Votre profil motivation (répartition)</h2>
+          <ResponsiveContainer width="100%" aspect={1}>
+            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
+              <PolarGrid />
+              <PolarAngleAxis dataKey="dimension" tick={{ fontSize: 12, fontWeight: 500, fill: "#222" }} />
+              <PolarRadiusAxis angle={30} domain={[0, 10]} tickCount={6} />
+              <Radar name={prenom} dataKey="valeur" stroke="#4f74f5" fill="#4f74f5" fillOpacity={0.3} />
+            </RadarChart>
+          </ResponsiveContainer>
         </div>
-      ))}
-      <div style={{ margin: "12px 0" }}>Total points : <strong>{total}</strong> / 10</div>
-      <button type="submit" disabled={total !== 10}>Envoyer</button>
-      <div style={{ color: 'red', marginTop: 8 }}>{message}</div>
-    </form>
+      )}
+    </div>
   );
 }
