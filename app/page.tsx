@@ -13,8 +13,6 @@ const axes = [
   "Rémunération",
   "Contribution sociale et sociétale / Alignement valeur",
 ];
-
-// Clés utilisées dans la base (doivent matcher avec ta table)
 const axesKeys = [
   "plaisir", "autonomie", "collectif", "equilibre",
   "expertise", "statut", "remuneration", "contribution"
@@ -27,7 +25,6 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [moyenne, setMoyenne] = useState<number[]>([]);
-  
   const total = values.reduce((a, b) => a + b, 0);
 
   const handleChange = (i: number, v: string) => {
@@ -36,7 +33,6 @@ export default function Home() {
     setValues(newVals);
   };
 
-  // Calcul de la moyenne globale (après soumission)
   const fetchMoyenne = async () => {
     let query = supabase.from("reponses").select(axesKeys.join(","));
     const { data, error } = await query;
@@ -78,7 +74,6 @@ export default function Home() {
       setMessage("Erreur lors de l'enregistrement.");
       setLoading(false);
     } else {
-      // Charge la moyenne après soumission
       const moyenneAll = await fetchMoyenne();
       setMoyenne(moyenneAll);
       setPage("result");
@@ -86,7 +81,6 @@ export default function Home() {
     }
   };
 
-  // Données pour le radar du participant
   const radarData = axes.map((axe, i) => ({
     dimension: axe,
     valeur: values[i],
@@ -97,8 +91,8 @@ export default function Home() {
     <div className="form-container">
       {page === "form" ? (
         <>
-          <h1 style={{fontSize:'2.2rem', marginBottom:10}}>Distribuer 10 points sur les axes prioritaires</h1>
-          <div className="subtitle" style={{fontSize:'1.07rem', marginBottom:18}}>
+          <h1>Distribuer 10 points sur les axes prioritaires</h1>
+          <div className="subtitle">
             Quels sont pour vous les axes qui pèsent le plus dans le choix du travail que vous exercez aujourd'hui ?
           </div>
           <form onSubmit={handleSubmit}>
