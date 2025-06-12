@@ -1,63 +1,55 @@
 body {
   background: #f7f7fa;
-  min-height: 100vh;
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
+
 .form-container {
-  max-width: 470px;
-  margin: 48px auto;
-  padding: 32px 28px 24px 28px;
+  max-width: 450px;
+  margin: 42px auto;
+  padding: 28px 20px 24px 20px;
   background: white;
-  border-radius: 18px;
-  box-shadow: 0 4px 22px 0 #d5d6ea33;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px 0 #b4b5c633;
 }
-h1 {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 2.1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.subtitle {
-  color: #475569;
-  text-align: center;
-  margin-bottom: 18px;
-  font-size: 1.08rem;
-}
+
 .vertical-fields {
   display: flex;
   flex-direction: column;
-  gap: 0.6em;
+  gap: 1.1em;
 }
+
 .axes-block {
   display: flex;
   flex-direction: column;
   gap: 11px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
+
 .field-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.02rem;
+  font-size: 1.05rem;
 }
+
 input[type="number"], input[type="text"] {
-  padding: 6px 10px;
+  padding: 7px 10px;
   width: 90px;
   font-size: 1rem;
-  border: 1.1px solid #d1d5db;
+  border: 1.2px solid #c0c4e0;
   border-radius: 8px;
-  background: #f5f7fb;
+  background: #f2f7fa;
 }
+
 button {
   display: block;
   margin: 18px auto 0 auto;
-  padding: 9px 36px;
-  border-radius: 12px;
+  padding: 10px 38px;
+  border-radius: 13px;
   background: #38bdf8;
   color: white;
-  font-size: 1.08rem;
+  font-size: 1.09rem;
   border: none;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -74,25 +66,20 @@ button:disabled {
   margin: 15px 0 7px 0;
   border: 0;
   border-top: 2px solid #a5b4fc;
-  opacity: 0.22;
+  opacity: 0.21;
 }
-.msg {
-  text-align: center;
-  margin-top: 10px;
-  font-weight: 600;
-}
-.msg.error { color: #c02b2b;}
-.msg.success { color: #05963a;}
 .total-points {
-  font-size: 1.04rem;
+  font-size: 1.06rem;
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 4px;
   color: #3730a3;
   font-weight: 600;
+  margin-top: 7px;
 }
+.msg { text-align: center; margin-top: 10px; font-weight: 600;}
+.msg.error { color: #c02b2b;}
+.msg.success { color: #05963a;}
 @media (max-width: 600px) {
-  .form-container { padding: 14px 4vw; max-width: 98vw;}
+  .form-container { padding: 10px 2vw; max-width: 98vw;}
   .field-row { flex-direction: column; align-items: flex-start; gap: 3px;}
   .axes-block input[type="number"] { width: 75px;}
 }
