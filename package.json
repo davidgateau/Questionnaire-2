@@ -1,6 +1,7 @@
 {
   "name": "fresque-questionnaire",
   "version": "1.0.0",
+  "recharts": "^2.15.3",
   "private": true,
   "scripts": {
     "dev": "next dev",
