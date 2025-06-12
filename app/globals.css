@@ -17,7 +17,7 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 16px;
-  font-size: 1.4rem;
+  font-size: 2.1rem;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -35,11 +35,18 @@ h1 {
   gap: 0.6em;
 }
 
+.axes-block {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 13px;
+}
+
 label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.04rem;
+  font-size: 1.03rem;
   gap: 10px;
 }
 
@@ -105,4 +112,19 @@ button:disabled {
 
 .field-row {
   margin-bottom: 0px;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 14px 4vw;
+    max-width: 98vw;
+  }
+  .field-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+  .axes-block input[type="number"] {
+    width: 75px;
+  }
 }
