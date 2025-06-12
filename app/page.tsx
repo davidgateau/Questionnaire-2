@@ -153,7 +153,6 @@ export default function Home() {
                   fillOpacity={0.44}
                   isAnimationActive={false}
                 />
-                {/* Moyenne des autres */}
                 {moyenne.length > 0 &&
                   <Radar
                     name="Moyenne des autres"
