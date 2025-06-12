@@ -97,8 +97,8 @@ export default function Home() {
     <div className="form-container">
       {page === "form" ? (
         <>
-          <h1>Distribuer 10 points sur les axes prioritaires</h1>
-          <div className="subtitle">
+          <h1 style={{fontSize:'2.2rem', marginBottom:10}}>Distribuer 10 points sur les axes prioritaires</h1>
+          <div className="subtitle" style={{fontSize:'1.07rem', marginBottom:18}}>
             Quels sont pour vous les axes qui pèsent le plus dans le choix du travail que vous exercez aujourd'hui ?
           </div>
           <form onSubmit={handleSubmit}>
@@ -108,18 +108,20 @@ export default function Home() {
                 <input type="text" value={prenom} onChange={e => setPrenom(e.target.value)} required />
               </label>
               <hr className="hrcolor"/>
-              {axes.map((axe, i) => (
-                <label key={axe} className="field-row">
-                  <span>{axe} :</span>
-                  <input
-                    type="number"
-                    min={0}
-                    max={10}
-                    value={values[i]}
-                    onChange={e => handleChange(i, e.target.value)}
-                  />
-                </label>
-              ))}
+              <div className="axes-block">
+                {axes.map((axe, i) => (
+                  <label key={axe} className="field-row">
+                    <span>{axe} :</span>
+                    <input
+                      type="number"
+                      min={0}
+                      max={10}
+                      value={values[i]}
+                      onChange={e => handleChange(i, e.target.value)}
+                    />
+                  </label>
+                ))}
+              </div>
               <div className="total-points">
                 Total points : <strong>{total}</strong> / 10
               </div>
@@ -134,7 +136,6 @@ export default function Home() {
         </>
       ) : (
         <>
-          {/* Logo en haut */}
           <img
             src="/logo-fresque.png"
             alt="Logo Fresque du Climat"
@@ -165,7 +166,7 @@ export default function Home() {
                     dataKey="moyenne"
                     stroke="#eab308"
                     fill="#fde68a"
-                    fillOpacity={0.25}
+                    fillOpacity={0.22}
                     isAnimationActive={false}
                   />
                 }
