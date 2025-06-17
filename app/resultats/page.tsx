@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient"; // <-- CHEMIN CORRIGÉ
-
+import { supabase } from "../supabaseClient";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 const axes = [
@@ -49,6 +48,12 @@ export default function Resultats() {
 
   return (
     <div className="resultats-container" style={{padding: 40}}>
+      {/* Logo en haut */}
+      <img
+        src="/logofresquedutravail.jpg"
+        alt="Logo Fresque du Travail"
+        style={{ width: 110, margin: '18px auto 24px auto', display: "block" }}
+      />
       <h1 style={{textAlign:'center'}}>Moyenne en direct des participants</h1>
       <div style={{width:'100%', maxWidth:480, height:380, margin:'auto'}}>
         <ResponsiveContainer width="100%" height="100%">
