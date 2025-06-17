@@ -61,7 +61,7 @@ export default function Resultats() {
         alt="Logo Fresque du Travail"
         style={{ width: 110, margin: '18px auto 24px auto', display: "block" }}
       />
-      <h1 style={{textAlign:'center'}}>Résultats</h1>
+      
       <div style={{textAlign:'center', fontWeight:'bold', fontSize:'1.1rem', margin:'12px 0'}}>
         Nombre de participants : {nbParticipants}
       </div>
