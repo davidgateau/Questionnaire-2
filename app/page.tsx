@@ -91,6 +91,12 @@ export default function Home() {
     <div className="form-container">
       {page === "form" ? (
         <>
+          {/* LOGO EN HAUT DE LA PAGE */}
+          <img
+            src="/logofresquedutravail.jpg"
+            alt="Logo Fresque du Travail"
+            style={{ width: 110, margin: '18px auto 24px auto', display: "block" }}
+          />
           <h1>Distribuer 10 points sur les axes prioritaires</h1>
           <div className="subtitle">
             Quels sont pour vous les axes qui pèsent le plus dans le choix du travail que vous exercez aujourd'hui ?
@@ -166,10 +172,8 @@ export default function Home() {
               </RadarChart>
             </ResponsiveContainer>
           </div>
-          <div style={{marginTop:30, textAlign:'center'}}>
-            <button onClick={() => { setPage("form"); setPrenom(""); setValues(Array(8).fill(0)); setMessage(""); }}>
-              Recommencer
-            </button>
+          <div style={{marginTop:30, textAlign:'center', fontWeight:'bold', fontSize:'1.2rem'}}>
+            Merci !
           </div>
         </>
       )}
