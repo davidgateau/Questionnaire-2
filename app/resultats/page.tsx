@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from "react";
-import { supabase } from "../../supabaseClient";
+import { supabase } from "../supabaseClient"; // <-- CHEMIN CORRIGÉ
+
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 const axes = [
@@ -69,4 +70,3 @@ export default function Resultats() {
     </div>
   );
 }
-
